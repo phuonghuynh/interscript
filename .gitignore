@@ -6,3 +6,5 @@ pkg/
 *.iml
 .ignoreme
 /terraform/.terraform
+/terraform/src
+/terraform/.archive.zip
