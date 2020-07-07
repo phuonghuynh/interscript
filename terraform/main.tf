@@ -10,16 +10,17 @@ resource "aws_lambda_function" "this" {
     aws_s3_bucket_object.this
   ]
 
-  description = "testing ruby function"
+//  description = "testing ruby function"
   role        = aws_iam_role.this.arn
   runtime     = "ruby2.7"
+  source_code_hash = data.archive_file.this.output_md5
 
 
   s3_bucket = var.bucketName
   s3_key = "code"
 
   function_name = var.name
-  handler       = "lambda_function.handler"
+  handler       = "lib/lambda_function.handler"
 
   timeout     = var.fn_timeout
   memory_size = var.fn_memory_size
